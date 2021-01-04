@@ -1,44 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| email      | string | null: false |
-| password   | string | null: false |
-| name       | string | null: false |
-| profile    | text   | null: false |
-| occupation | text   | null: false |
-| position   | text   | null: false |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-- has_many :prototypes
-- has_many :comments
+* System dependencies
 
-## prototypes テーブル
+* Configuration
 
-| column     | Type        | Options                   |  
-|------------|-------------|---------------------------|
-| title      | string      | null: false               |  
-| catch_copy | text        | null: false               |  
-| concept    | text        | null: false               |
-| user       | references  | null: false, foreign_key  |
+* Database creation
 
-### Association
+* Database initialization
 
-- belongs_to :user
-- has_many :comments
+* How to run the test suite
 
-## comments テーブル
+* Services (job queues, cache servers, search engines, etc.)
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| text      | text       | null: false                    |
-| user      | references | null: false, foreign_key: true |
-| prototype | references | null: false, foreign_key: true |
+* Deployment instructions
 
-### Association
-
-- belongs_to :prototype
-- belongs_to :user
+* ...
