@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| nickname           | string | null: false |
-| family_name        | string | null: false |
-| last_name          | string | null: false |
-| family_name_kana   | string | null: false |
-| last_name_kana     | string | null: false |
-| birthday           | date   | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| email              | string | null: false, unique:true |
+| encrypted_password | string | null: false              |
+| nickname           | string | null: false              |
+| family_name        | string | null: false              |
+| last_name          | string | null: false              |
+| family_name_kana   | string | null: false              |
+| last_name_kana     | string | null: false              |
+| birthday           | date   | null: false              |
 
 ### Association
 
@@ -32,7 +32,6 @@
 | shipping_days_id   | integer     | null: false               |
 | price              | integer     | null: false               |
 | user               | references  | null: false, foreign_key  |
-| sold_flag          | boolean     |                           |
 
 ### Association
 
@@ -65,6 +64,7 @@
 | street_number      | string      | null: false               |
 | building           | string      |                           |
 | tel                | string      | null: false               |
+| purchase           | references  | null: false, foreign_key  |  
 
 ### Association
 
