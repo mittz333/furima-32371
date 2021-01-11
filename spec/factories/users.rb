@@ -2,7 +2,8 @@ FactoryBot.define do
   factory :user do
     nickname { Faker::Name.last_name }
     email { Faker::Internet.free_email }
-    password = Faker::Internet.password(min_length: 6)
+    # password = Faker::Internet.password(min_length: 6) 英数字混在しない可能性あるので以下に変更
+    password = Faker::Lorem.characters(number: 10, min_alpha: 1, min_numeric: 1)
     password { password }
     password_confirmation { password }
 
