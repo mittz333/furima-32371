@@ -5,35 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%# <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css"> %>
-    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="../assets/reset">
+    <link rel="stylesheet" type="text/css" href="../assets/shared/error_messages">
+    <link rel="stylesheet" type="text/css" href="../assets/shared/header">
+    <link rel="stylesheet" type="text/css" href="../assets/shared/footer.scss">
+    <link rel="stylesheet" type="text/css" href="../assets/shared/second_fotter">
+    <link rel="stylesheet" type="text/css" href="../assets/shared/second_header">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="header">
-      <div class="inner">
-        <div class="nav">
-          <div class="nav__left">
-            <%# <%= link_to image_tag("logo.png", class: :logo), root_path %>
-          </div>
-          <% if user_signed_in? %>
-            <div class="nav__right">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
-              <%= link_to "#{current_user.nickname}","#" %>
-            </div>
-          <% else %>
-            <div class="nav__right">
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </header>
+    <%= render "shared/header" %>
     <%= yield %>
-    <footer class="footer">
-      <p class="copyright">Copyright © Frima All rights reserved.</p>
-    </footer>
+    <%= render "shared/footer" %>
   </body>
 </html>
