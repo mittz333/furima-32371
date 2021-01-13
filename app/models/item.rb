@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :condition_id, presence: true
   validates :shipping_charge_id, presence: true
   validates :prefecture_id, presence: true
-  validates :shipping_days_id, presence: true
+  validates :shipping_day_id, presence: true
   validates :price, presence: true
   validates :image, presence: true
 end
