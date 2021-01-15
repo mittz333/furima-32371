@@ -4,10 +4,13 @@ RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
+      # @user = FactoryBot.create(:user)
+      # @item.user_id = @user.id
     end
 
     it "titleとdetail、category_idとcondition_id、shipping_charge_idとprefecture_id、prefecture_idとshipping_day_id、
         priceとimageとuser_idが存在すれば登録できること" do
+      binding.pry
       expect(@item).to be_valid
     end
 

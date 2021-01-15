@@ -11,13 +11,20 @@ class Item < ApplicationRecord
   has_one :purchase
   has_many :comments, dependent: :destroy
 
-  validates :title, presence: true
-  validates :detail, presence: true
-  validates :category_id, numericality: { other_than: 0 }
-  validates :condition_id, numericality: { other_than: 0 }
-  validates :shipping_charge_id, numericality: { other_than: 0 }
-  validates :prefecture_id, numericality: { other_than: 0 }
-  validates :shipping_day_id, numericality: { other_than: 0 }
+  with_options presence: true do
+    validates :title
+    validates :detail
+    validates :image
+  end
+
+  with_options numericality: { other_than: 0 } do
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :shipping_day_id
+    validates :category_id
+  end
+
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  validates :image, presence: true
 end
