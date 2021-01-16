@@ -4,8 +4,6 @@ RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
-      @user = FactoryBot.create(:user)
-      @item.user_id = @user.id
     end
 
     it "titleとdetail、category_idとcondition_id、shipping_charge_idとprefecture_id、prefecture_idとshipping_day_id、
@@ -86,9 +84,9 @@ RSpec.describe Item, type: :model do
     end
 
     it 'ユーザーが必須であること' do
-      @item.user_id = nil
+      @item.user = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("User can't be blank")
+      expect(@item.errors.full_messages).to include("User must exist")
     end
   end
 end
