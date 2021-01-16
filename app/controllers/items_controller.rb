@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
   end
 
   def new
     # redirect_to root_path unless user_signed_in? 未ログイン時、トップページではなくログインページに飛ぶように変更
-    redirect_to new_user_session_path unless user_signed_in?
+    # redirect_to new_user_session_path unless user_signed_in?
     @item = Item.new
   end
 

@@ -8,7 +8,6 @@ FactoryBot.define do
     title { Faker::Lorem.word }
     detail { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
     price { Faker::Number.between(from: 300, to: 9_999_999) }
-    # image { Faker::Lorem.sentence }
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
