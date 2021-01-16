@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格が適正な数値であること(300〜9,999,999)(300未満）' do
-      @item.price = 100
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
     end

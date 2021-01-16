@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    redirect_to root_path unless user_signed_in?
+    # redirect_to root_path unless user_signed_in? 未ログイン時、トップページではなくログインページに飛ぶように変更
+    redirect_to new_user_session_path unless user_signed_in?
     @item = Item.new
   end
 
@@ -19,7 +20,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    # binding.pry
     params.require(:item).permit(:title, :detail, :category_id, :condition_id, :shipping_charge_id,
                                  :prefecture_id, :shipping_day_id, :price, :image)
           .merge(user_id: current_user.id)
