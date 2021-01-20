@@ -9,7 +9,11 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one :purchase
-  has_many :comments, dependent: :destroy
+  # has_many :comments, dependent: :destroy
+  # 将来的にitemsテーブルにぶら下がるcommentsテーブルが出来たら、上のように書くが、
+  # 現時点ではcommentsテーブル無いので、下のように書く。
+  # 下のように書かないと、itemを削除する際にエラーになる。
+  has_many :comments
 
   with_options presence: true do
     validates :title
