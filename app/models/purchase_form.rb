@@ -1,7 +1,7 @@
 class PurchaseForm
 
   include ActiveModel::Model
-  attr_accessor :item, :user, :zipcode, :prefecture_id, :city, :street_number, :building, :tel, :purchase
+  attr_accessor :item_id, :user_id, :zipcode, :prefecture_id, :city, :street_number, :building, :tel, :purchase
 
   with_options presence: true do
     validates :zipcode
@@ -16,5 +16,9 @@ class PurchaseForm
   end
 
   def save
-    # 各テーブルにデータを保存する処理を書く
+    # binding.pry
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    Address.create(zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_number: street_number, building: building, tel: tel, purchase_id: purchase.id)
   end
+
+end
