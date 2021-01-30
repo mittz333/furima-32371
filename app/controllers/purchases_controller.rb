@@ -6,12 +6,14 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @purchaseform = PurchaseForm.new(purchase_params)
-    if @purchaseform.save
+    @item = Item.find(purchase_params[:item_id])
+    # binding.pry
+    if @purchaseform.valid?
+      @purchaseform.save
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
