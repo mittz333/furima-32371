@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order(created_at: 'DESC')
-    # binding.pry
   end
 
   def new

@@ -8,7 +8,5 @@ FactoryBot.define do
     tel { Faker::Lorem.characters(number: 11, min_numeric: 11) }
 
     token { 'tok_abcdefghijk00000000000000000' }
-    # association :user
-    # association :item
   end
 end
