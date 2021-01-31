@@ -3,6 +3,8 @@ class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :is_purchase, only: [:index, :create]
 
+  # コミット行うため、ダミーの行を追加
+  
   def index
     @purchaseform = PurchaseForm.new
     if @item.purchase != nil || @item.user_id == current_user.id

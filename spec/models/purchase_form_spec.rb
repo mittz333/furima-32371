@@ -85,7 +85,7 @@ RSpec.describe PurchaseForm, type: :model do
     end
     
     it '電話番号は12桁以上だと登録できないこと' do
-      @purchaseform.tel = '0123-456-78901'
+      @purchaseform.tel = '012345678901'
       @purchaseform.valid?
       expect(@purchaseform.errors.full_messages).to include('Tel 電話番号にはハイフンは不要で、11桁以内')
     end
