@@ -1,5 +1,4 @@
 class PurchaseForm
-
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :zipcode, :prefecture_id, :city, :street_number, :building, :tel, :purchase, :token
 
@@ -13,7 +12,7 @@ class PurchaseForm
     validates :token
   end
 
-  with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号は「-」を含む且つ7桁）を使用してください' } do
+  with_options presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: '郵便番号は「-」を含む且つ7桁）を使用してください' } do
     validates :zipcode
   end
   with_options presence: true, format: { with: /\A\d{,11}\z/, message: '電話番号にはハイフンは不要で、11桁以内' } do
@@ -27,7 +26,7 @@ class PurchaseForm
   def save
     # binding.pry
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
-    Address.create(zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_number: street_number, building: building, tel: tel, purchase_id: purchase.id)
+    Address.create(zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_number: street_number, building: building,
+                   tel: tel, purchase_id: purchase.id)
   end
-
 end

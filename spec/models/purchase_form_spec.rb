@@ -11,7 +11,7 @@ RSpec.describe PurchaseForm, type: :model do
       sleep 0.1
     end
 
-    it "すべての値が正しく入力されていれば保存できること" do
+    it 'すべての値が正しく入力されていれば保存できること' do
       # binding.pry
       expect(@purchaseform).to be_valid
     end
@@ -85,6 +85,5 @@ RSpec.describe PurchaseForm, type: :model do
       # binding.pry
       expect(@purchaseform.errors.full_messages).to include("Token can't be blank")
     end
-
   end
 end
