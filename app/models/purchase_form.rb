@@ -1,7 +1,7 @@
 class PurchaseForm
 
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :zipcode, :prefecture_id, :city, :street_number, :building, :tel, :purchase
+  attr_accessor :item_id, :user_id, :zipcode, :prefecture_id, :city, :street_number, :building, :tel, :purchase, :token
 
   with_options presence: true do
     validates :city
@@ -9,6 +9,8 @@ class PurchaseForm
 
     validates :item_id
     validates :user_id
+
+    validates :token
   end
 
   with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号は「-」を含む且つ7桁）を使用してください' } do

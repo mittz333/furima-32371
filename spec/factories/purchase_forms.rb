@@ -7,6 +7,8 @@ FactoryBot.define do
     street_number { Faker::Address.street_address }
     building { Faker::Lorem.words }
     tel { Faker::Lorem.characters(number: 11, min_numeric: 11) }
+
+    token {"tok_abcdefghijk00000000000000000"}
     # association :user
     # association :item
   end
