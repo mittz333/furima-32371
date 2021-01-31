@@ -1,15 +1,13 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :is_purchase, only: [:index, :create]
 
   def index
     @purchaseform = PurchaseForm.new
-    if @item.user_id == current_user.id
+    if @item.purchase != nil || @item.user_id == current_user.id
       redirect_to root_path
-    end
-    if @item.purchase != nil 
-      redirect_to root_path
-    end
+    end    
   end
 
   def create
@@ -35,6 +33,12 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def is_purchase
+    if @item.purchase != nil || @item.user_id == current_user.id
+      redirect_to root_path
+    end    
+  end
+
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -43,4 +47,5 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
   end
+
 end

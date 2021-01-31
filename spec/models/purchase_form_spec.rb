@@ -13,6 +13,11 @@ RSpec.describe PurchaseForm, type: :model do
       expect(@purchaseform).to be_valid
     end
 
+    it '建物名が抜けていても登録できること' do
+      @purchaseform.building = nil
+      expect(@purchaseform).to be_valid
+    end
+
     it '郵便番号が必須であること' do
       @purchaseform.zipcode = nil
       @purchaseform.valid?
@@ -72,5 +77,18 @@ RSpec.describe PurchaseForm, type: :model do
       @purchaseform.valid?
       expect(@purchaseform.errors.full_messages).to include("Token can't be blank")
     end
+
+    it '電話番号は全角数字だと登録できないこと' do
+      @purchaseform.tel = '０１２３-４５６-７８９０'
+      @purchaseform.valid?
+      expect(@purchaseform.errors.full_messages).to include('Tel 電話番号にはハイフンは不要で、11桁以内')
+    end
+    
+    it '電話番号は12桁以上だと登録できないこと' do
+      @purchaseform.tel = '0123-456-78901'
+      @purchaseform.valid?
+      expect(@purchaseform.errors.full_messages).to include('Tel 電話番号にはハイフンは不要で、11桁以内')
+    end
+
   end
 end
